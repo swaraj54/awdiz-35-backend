@@ -1,0 +1,88 @@
+AUTH - 5
+register - select role -> user, seller, admin
+login
+logout
+current-session - fe hard refresh, -> redux - data
+forgot password 
+
+schema 
+users 
+
+ADMIN - 7
+Dashboard api - all details
+seller approval
+product approval 
+view sellers 
+view users 
+view orders
+view profit - based on product sell -> 5% comission 
+
+schema 
+seller 
+product
+orders 
+profit 
+
+SELLER - 9
+Dashboard api - seller details
+create product 
+view product
+edit 
+delete 
+View orders 
+View profit 
+Change delivery status - pending, dispatch, delivered,
+Change payment status - unpaid, paid, partilly paid 
+
+
+USER - 10
+view profile
+edit/change profile/password 
+delete deactivation profile 
+dashboard 
+    - navbar - category -> dropdown 
+    - product - top products -> tags : ["best selling"]
+view selected category products  
+single product 
+wishlist product
+cart product 
+create/select address 
+order products 
+
+schema 
+cart 
+wishlist 
+address 
+
+Extra  - 10
+make dynamic tags 
+best selling  - track product in orders
+trending product - view
+offer - based on price 
+home - banner 1,2,3 - images - admin - set - offer images - schema -> banner no. -> active  
+product offer price -> price and start date and end date
+rating and comments 
+
+
+Schema List  -  8
+
+users 
+seller 
+product
+orders 
+profit 
+cart 
+wishlist 
+address 
+
+Middlewares  - 2
+Token
+Role  
+
+.env
+MONGODBURL 
+CONFIG - PROD NONPROD DEV 
+SECRET - TOKEN 
+
+
+
