@@ -9,7 +9,8 @@ import MainRouter from "./routes/index.js";
 const app = express();
 dotenv.config();
 app.use(express.json())
-app.use(cors())
+const corsConfig = { origin : "http://localhost:5173", credentials : true}
+app.use(cors(corsConfig))
 app.use(morgan('combined'))
 
 app.get("/", (req, res) => {

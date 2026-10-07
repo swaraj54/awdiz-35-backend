@@ -1,9 +1,9 @@
 AUTH - 5
 register - select role -> user, seller, admin - done
-login
-logout
-current-session - fe hard refresh, -> redux - data
-forgot password 
+login - completed
+current-session - fe hard refresh, -> redux - data - pending
+logout - pending
+forgot password  - pending
 
 schema 
 users 
