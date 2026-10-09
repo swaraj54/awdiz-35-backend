@@ -4,9 +4,11 @@ import mongoose from "mongoose";
 import cors from "cors"
 import morgan from "morgan";
 import MainRouter from "./routes/index.js";
+import cookieParser from "cookie-parser";
 
 
 const app = express();
+app.use(cookieParser())
 dotenv.config();
 app.use(express.json())
 const corsConfig = { origin : "http://localhost:5173", credentials : true}

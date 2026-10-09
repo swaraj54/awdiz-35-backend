@@ -1,21 +1,22 @@
 AUTH - 5
-register - select role -> user, seller, admin - done
+register - select role -> user, seller, admin - completed
 login - completed
-current-session - fe hard refresh, -> redux - data - pending
-logout - pending
-forgot password  - pending
+current-session - fe hard refresh, -> redux - data - completed
+logout - completed
 
 schema 
 users 
 
 ADMIN - 7
-Dashboard api - all details
-seller approval
-product approval 
-view sellers 
-view users 
-view orders
-view profit - based on product sell -> 5% comission 
+view sellers - pending
+seller approval - pending
+view users  - pending
+
+product approval  - pending
+
+Dashboard api - all details - pending
+view orders - pending
+view profit - based on product sell -> 5% comission  - pending
 
 schema 
 seller 
@@ -24,15 +25,16 @@ orders
 profit 
 
 SELLER - 9
-Dashboard api - seller details
-create product 
-view product
-edit 
-delete 
-View orders 
-View profit 
-Change delivery status - pending, dispatch, delivered,
-Change payment status - unpaid, paid, partilly paid 
+create product  - pending
+view product - pending
+edit  - pending
+delete  - pending
+
+Dashboard api - seller details - pending
+View orders  - pending
+View profit  - pending
+Change delivery status - pending, dispatch, delivered, - pending
+Change payment status - unpaid, paid, partilly paid  - pending
 
 
 USER - 10
@@ -62,6 +64,7 @@ offer - based on price
 home - banner 1,2,3 - images - admin - set - offer images - schema -> banner no. -> active  
 product offer price -> price and start date and end date
 rating and comments 
+forgot password  - pending
 
 
 Schema List  -  8
