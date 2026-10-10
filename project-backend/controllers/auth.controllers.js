@@ -73,7 +73,7 @@ export const loginController = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Login successfull.",
-      user: { name: user.name, email: user.email },
+      user: { name: user.name, email: user.email, role : user.role },
     });
   } catch (error) {
     console.log(error, "error");
@@ -88,7 +88,7 @@ export const getCurrentUser = async (req, res) => {
       .status(200)
       .json({
         success: true,
-        user: { name: req.user.name, email: req.user.email },
+        user: { name: req.user.name, email: req.user.email, role : req.user.role },
       });
   } catch (error) {
     console.log(error, "error");

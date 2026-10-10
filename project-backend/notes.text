@@ -8,9 +8,9 @@ schema
 users 
 
 ADMIN - 7
-view sellers - pending
-seller approval - pending
-view users  - pending
+view sellers - completed
+seller approval - completed
+view users  - completed
 
 product approval  - pending
 
@@ -27,8 +27,6 @@ profit
 SELLER - 9
 create product  - pending
 view product - pending
-edit  - pending
-delete  - pending
 
 Dashboard api - seller details - pending
 View orders  - pending
@@ -65,6 +63,8 @@ home - banner 1,2,3 - images - admin - set - offer images - schema -> banner no.
 product offer price -> price and start date and end date
 rating and comments 
 forgot password  - pending
+edit product  - pending
+delete product  - pending
 
 
 Schema List  -  8
