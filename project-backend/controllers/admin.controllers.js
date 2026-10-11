@@ -1,4 +1,5 @@
 import UserSchema from "../models/user.schema.js";
+import ProductSchema from "../models/product.schema.js";
 
 export const getAllSellers = async (req, res) => {
   try {
@@ -30,6 +31,26 @@ export const approveSeller = async (req, res) => {
     }
     await UserSchema.findByIdAndUpdate(sellerId, { isApprovedByAdmin: true });
     return res.status(200).json({ success: true, message : "Seller approved." });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+};
+
+export const approveProduct = async (req, res) => {
+  try {
+    const {productId} = req.body;
+    await ProductSchema.findByIdAndUpdate(productId, { approvedByAdmin: true });
+    return res.status(200).json({ success: true, message : "Product approved." });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+};
+
+
+export const getAllProducts = async (req, res) => {
+  try {
+    const products = await ProductSchema.find({});
+    return res.status(200).json({ success: true, products });
   } catch (error) {
     return res.status(500).json({ error, success: false });
   }

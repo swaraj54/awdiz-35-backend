@@ -11,9 +11,10 @@ ADMIN - 7
 view sellers - completed
 seller approval - completed
 view users  - completed
+View Product- completed
+product approval  - completed
 
-product approval  - pending
-
+PENDING
 Dashboard api - all details - pending
 view orders - pending
 view profit - based on product sell -> 5% comission  - pending
@@ -25,9 +26,10 @@ orders
 profit 
 
 SELLER - 9
-create product  - pending
-view product - pending
+create product  - completed
+view product - completed
 
+PENDING
 Dashboard api - seller details - pending
 View orders  - pending
 View profit  - pending
@@ -35,7 +37,7 @@ Change delivery status - pending, dispatch, delivered, - pending
 Change payment status - unpaid, paid, partilly paid  - pending
 
 
-USER - 10
+USER - 10 PENDING
 view profile
 edit/change profile/password 
 delete deactivation profile 
