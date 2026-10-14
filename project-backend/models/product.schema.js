@@ -11,6 +11,8 @@ const productSchema = Schema({
   approvedByAdmin : {type : Boolean, default : false}
 });
 
+// filter. - color- size-  tags
+
 const ProductSchema = model("products", productSchema);
 
 export default ProductSchema;

@@ -11,8 +11,8 @@ ADMIN - 7
 view sellers - completed
 seller approval - completed
 view users  - completed
-View Product- completed
-product approval  - completed
+View Product- completed - 20th session
+product approval  - completed - 20th session
 
 PENDING
 Dashboard api - all details - pending
@@ -26,8 +26,8 @@ orders
 profit 
 
 SELLER - 9
-create product  - completed
-view product - completed
+create product  - completed - 20th session
+view product - completed - 20th session
 
 PENDING
 Dashboard api - seller details - pending
@@ -38,18 +38,22 @@ Change payment status - unpaid, paid, partilly paid  - pending
 
 
 USER - 10 PENDING
-view profile
-edit/change profile/password 
-delete deactivation profile 
-dashboard 
+view profile - completed 21th session
+view selected category products   - completed 21th session
+filter  - completed 21th session - assignment filter out with price 
+
+single product  - pending
+cart product  - pending
+create/select address  - pending
+order products  - pending
+
+
+Home Page  - pending
     - navbar - category -> dropdown 
     - product - top products -> tags : ["best selling"]
-view selected category products  
-single product 
-wishlist product
-cart product 
-create/select address 
-order products 
+wishlist product - pending
+edit/change profile/password  - pending
+delete deactivation profile  - pending
 
 schema 
 cart 
