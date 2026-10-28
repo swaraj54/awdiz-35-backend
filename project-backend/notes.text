@@ -41,15 +41,12 @@ USER - 10 PENDING
 view profile - completed 21th session
 view selected category products   - completed 21th session
 filter  - completed 21th session - assignment filter out with price 
-
 single product  - completed 22nd session
 cart product  - completed 22nd session
-
 create/select address - completed 23rd session
+place orders - completed 25th session
 
-place orders, create/view - pending
-
-
+view orders - pending 
 Home Page  - pending
     - navbar - category -> dropdown 
     - product - top products -> tags : ["best selling"]
@@ -103,4 +100,57 @@ name string
 email string
 password string
 role string enum []
+
+
+
+
+
+
+
+
+MERN only js -> frontend backend 
+JAVA -> frontend javascript and backend java , Ashish 
+
+
+
+
+MONGODB
+REACT 
+EXPRESS
+NODE. 
+
+week 4 days. 
+2 offline - Saturday and sunday  - 11 am - 3 pm
+2 online  - wednesday and friday , evening - 8pm or morning 11 am 
+
+
+HTML - 10 session -> 1 assignment -> LMS -> uPLOAD 
+css  - 1 month -> 15 days,  Saturday - test
+javascript  
+dsa - 1 month 
+react  - redux - 1month  
+
+MOCKS 
+TEST -> 
+HTML CSS
+, DSA
+, REACT 
+
+
+JAVA 
+FRAMEWORK 
+SQL 
+
+node 
+express 
+mongodb  - 1.5 month 
+
+MOCKS 
+TEST
+
+1 month - project 
+
+5-6 month duration 
+
+
 

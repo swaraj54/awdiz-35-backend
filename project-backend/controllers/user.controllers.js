@@ -1,5 +1,6 @@
 import AddressSchema from "../models/address.schema.js";
 import CartSchema from "../models/cart.schema.js";
+import OrderSchema from "../models/orders.schema.js";
 import ProductSchema from "../models/product.schema.js";
 import UserSchema from "../models/user.schema.js";
 
@@ -91,7 +92,9 @@ export const getCartProducts = async (req, res) => {
     const cartData = await CartSchema.findOne({ user: userId }).populate(
       "products",
     );
-    return res.status(200).json({ success: true, products: cartData?.products || [] });
+    return res
+      .status(200)
+      .json({ success: true, products: cartData?.products || [] });
   } catch (error) {
     console.log(error, "error");
     return res.status(500).json({ error, success: false });
@@ -134,24 +137,57 @@ export const getAddress = async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await AddressSchema.findOne({ user: userId });
-    return res.status(200).json({ success: true, addresses: user?.addresses || [] });
+    return res
+      .status(200)
+      .json({ success: true, addresses: user?.addresses || [] });
   } catch (error) {
     console.log(error, "error");
     return res.status(500).json({ error, success: false });
   }
 };
 
-
 export const placeOrder = async (req, res) => {
   try {
-    // const userId = req.user._id;
-    // address 
-    // fetch card product price 
-    // stock reduce -1 
+    const userId = req.user._id;
+    const { street, city, pincode, _id } = req.body;
+    const userCart = await CartSchema.findOne({ user: userId }).populate({
+      path: "products",
+      select: "_id price",
+    });
 
-    // Orders Shema 
+    console.log(userCart, "userCart");
+    const newOrder = OrderSchema.create({
+      user: userId,
+      address: { street, city, pincode, addressId: _id },
+      products: userCart.products,
+    });
+    console.log(newOrder, "newOrder");
+    if (newOrder) {
+      for (let i = 0; i < userCart.products.length; i++) {
+        await ProductSchema.findByIdAndUpdate(userCart.products[i]._id, {
+          $inc: { stock: -1 },
+        });
+      }
+      userCart.products = [];
+      await userCart.save();
+    }
+
+    // stock reduce -1
 
     return res.status(200).json({ success: true });
+  } catch (error) {
+    console.log(error, "error");
+    return res.status(500).json({ error, success: false });
+  }
+};
+
+export const getOrders = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const orders = await OrderSchema.find({ user: userId }).populate("products.productId");
+    return res
+      .status(200)
+      .json({ success: true, orders: orders.length > 0 ? orders : [] });
   } catch (error) {
     console.log(error, "error");
     return res.status(500).json({ error, success: false });

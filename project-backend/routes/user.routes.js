@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUserProfile, getAllProducts, getProductDetails, addToCart, getCartProducts, createAddress, getAddress, placeOrder } from "../controllers/user.controllers.js";
+import { getUserProfile, getAllProducts, getProductDetails, addToCart, getCartProducts, createAddress, getAddress, placeOrder, getOrders } from "../controllers/user.controllers.js";
 
 const UserRouter = Router();
 
@@ -18,6 +18,7 @@ UserRouter.post("/create-address", createAddress)
 UserRouter.get("/get-addresses", getAddress)
 
 
-UserRouter.get("/place-order", placeOrder)
+UserRouter.post("/place-order", placeOrder)
 
+UserRouter.get("/get-orders", getOrders)
 export default UserRouter;
