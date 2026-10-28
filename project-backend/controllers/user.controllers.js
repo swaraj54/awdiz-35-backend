@@ -3,6 +3,7 @@ import CartSchema from "../models/cart.schema.js";
 import OrderSchema from "../models/orders.schema.js";
 import ProductSchema from "../models/product.schema.js";
 import UserSchema from "../models/user.schema.js";
+import bcrypt from "bcrypt";
 
 export const getUserProfile = async (req, res) => {
   try {
@@ -159,7 +160,10 @@ export const placeOrder = async (req, res) => {
     const newOrder = OrderSchema.create({
       user: userId,
       address: { street, city, pincode, addressId: _id },
-      products: userCart.products,
+      products: userCart.products.map((product) => ({
+        productId: product._id,
+        price: product.price,
+      })),
     });
     console.log(newOrder, "newOrder");
     if (newOrder) {
@@ -184,7 +188,7 @@ export const placeOrder = async (req, res) => {
 export const getOrders = async (req, res) => {
   try {
     const userId = req.user._id;
-    const orders = await OrderSchema.find({ user: userId }).populate("products.productId");
+    const orders = await OrderSchema.find({ user: userId }).populate({ path: "products.productId", select: "name category image" });
     return res
       .status(200)
       .json({ success: true, orders: orders.length > 0 ? orders : [] });
@@ -193,3 +197,41 @@ export const getOrders = async (req, res) => {
     return res.status(500).json({ error, success: false });
   }
 };
+
+
+
+export const changePassword = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { currentPassword, newPassword, confirmNewPassword } = req.body;
+    if (!currentPassword || !newPassword || !confirmNewPassword) {
+      return res.status(400).json({ error: "All fields are required.", success: false });
+    }
+    if (newPassword !== confirmNewPassword) {
+      return res.status(400).json({ error: "New password and confirm password do not match.", success: false });
+    }
+
+    const userData = await UserSchema.findById(userId);
+    if (!userData) {
+      return res.status(404).json({ error: "User not found.", success: false });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, userData.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: "Current password is incorrect.", success: false });
+    }
+
+    const encryptedNewPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update the user's password
+    userData.password = encryptedNewPassword;
+
+    await userData.save();
+
+    return res.status(200).json({ success: true, message: "Password changed successfully." });
+
+  } catch (error) {
+    console.log(error, "error");
+    return res.status(500).json({ error, success: false });
+  }
+}

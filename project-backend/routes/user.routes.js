@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUserProfile, getAllProducts, getProductDetails, addToCart, getCartProducts, createAddress, getAddress, placeOrder, getOrders } from "../controllers/user.controllers.js";
+import { changePassword, getUserProfile, getAllProducts, getProductDetails, addToCart, getCartProducts, createAddress, getAddress, placeOrder, getOrders } from "../controllers/user.controllers.js";
 
 const UserRouter = Router();
 
@@ -21,4 +21,9 @@ UserRouter.get("/get-addresses", getAddress)
 UserRouter.post("/place-order", placeOrder)
 
 UserRouter.get("/get-orders", getOrders)
+
+
+UserRouter.put("/change-password", changePassword)
+
+
 export default UserRouter;
