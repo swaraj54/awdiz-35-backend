@@ -14,12 +14,6 @@ const orderSchema = Schema({
     pincode: { type: String },
     addressId: { type: String },
   },
-  delivery_status: {
-    type: String,
-    default: "booked",
-    enum: ["dispatched", "delivered", "booked"],
-  },
-  payment_status: { type: String, default: "unpaid", enum: ["paid", "unpaid"] },
 
 });
 

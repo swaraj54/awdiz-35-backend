@@ -1,4 +1,5 @@
 import ProductSchema from "../models/product.schema.js";
+import SellerOrderSchema from "../models/sellerOrders.schema.js";
 
 export const getProducts = async (req, res) => {
   try {
@@ -28,7 +29,20 @@ export const createProduct = async (req, res) => {
       sellerId,
     });
 
-    return res.status(200).json({ success: true, product, message : "Product created successfully." });
+    return res.status(200).json({ success: true, product, message: "Product created successfully." });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+};
+
+
+export const getOrders = async (req, res) => {
+  try {
+    const sellerId = req.user._id;
+    const orders = await SellerOrderSchema.find({ seller: sellerId }).populate("user product seller");
+    return res
+      .status(200)
+      .json({ success: true, orders: orders.length > 0 ? orders : [] });
   } catch (error) {
     return res.status(500).json({ error, success: false });
   }

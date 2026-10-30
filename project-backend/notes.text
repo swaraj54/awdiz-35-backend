@@ -1,18 +1,18 @@
 AUTH - 5
-register - select role -> user, seller, admin - completed
-login - completed
-current-session - fe hard refresh, -> redux - data - completed
-logout - completed
+register - select role -> user, seller, admin - COMPLETED
+login - COMPLETED
+current-session - fe hard refresh, -> redux - data - COMPLETED
+logout - COMPLETED
 
 schema 
 users 
 
 ADMIN - 7
-view sellers - completed
-seller approval - completed
-view users  - completed
-View Product- completed - 20th session
-product approval  - completed - 20th session
+view sellers - COMPLETED
+seller approval - COMPLETED
+view users  - COMPLETED
+View Product- COMPLETED - 20th session
+product approval  - COMPLETED - 20th session
 
 PENDING
 Dashboard api - all details - pending
@@ -26,33 +26,48 @@ orders
 profit 
 
 SELLER - 9
-create product  - completed - 20th session
-view product - completed - 20th session
+create product  - COMPLETED - 20th session
+view product - COMPLETED - 20th session
+View orders - COMPLETED - 27th session
+
 
 PENDING
-Dashboard api - seller details - pending
-View orders  - pending
-View profit  - pending
 Change delivery status - pending, dispatch, delivered, - pending
 Change payment status - unpaid, paid, partilly paid  - pending
+View profit  - pending -> product price : 100 -> 10% -> admin fund -> seller -10 -> admin +10
+
+Dashboard api - seller details - pending
 
 
 USER - 10 PENDING
-view profile - completed 21th session
-view selected category products   - completed 21th session
-filter  - completed 21th session - assignment filter out with price 
-single product  - completed 22nd session
-cart product  - completed 22nd session
-create/select address - completed 23rd session
-place orders - completed 25th session
+view profile - COMPLETED 21th session
+view selected category products   - COMPLETED 21th session
+filter  - COMPLETED 21th session - assignment filter out with price 
+single product  - COMPLETED 22nd session
+cart product  - COMPLETED 22nd session
+create/select address - COMPLETED 23rd session
+place orders  - COMPLETED 25th session
+change password  - COMPLETED 26th session
+view orders - COMPLETED - 26 TH session
 
-view orders - pending 
+
 Home Page  - pending
     - navbar - category -> dropdown 
     - product - top products -> tags : ["best selling"]
 wishlist product - pending
-edit/change profile/password  - pending
+edit profile - pending
 delete deactivation profile  - pending
+
+
+
+
+
+
+
+
+
+
+
 
 schema 
 cart 

@@ -2,6 +2,7 @@ import AddressSchema from "../models/address.schema.js";
 import CartSchema from "../models/cart.schema.js";
 import OrderSchema from "../models/orders.schema.js";
 import ProductSchema from "../models/product.schema.js";
+import SellerOrderSchema from "../models/sellerOrders.schema.js";
 import UserSchema from "../models/user.schema.js";
 import bcrypt from "bcrypt";
 
@@ -153,7 +154,20 @@ export const placeOrder = async (req, res) => {
     const { street, city, pincode, _id } = req.body;
     const userCart = await CartSchema.findOne({ user: userId }).populate({
       path: "products",
-      select: "_id price",
+      select: "_id price sellerId",
+    });
+
+    // await OrderSchema.deleteMany({ user: userId });
+    // await SellerOrderSchema.deleteMany({});
+
+    userCart.products.map((product) => {
+      const newSellerOrder = SellerOrderSchema.create({
+        user: userId,
+        seller: product.sellerId,
+        product: product._id,
+        price: product.price,
+        address: { street, city, pincode, addressId: _id },
+      })
     });
 
     console.log(userCart, "userCart");
@@ -176,9 +190,9 @@ export const placeOrder = async (req, res) => {
       await userCart.save();
     }
 
-    // stock reduce -1
 
-    return res.status(200).json({ success: true });
+
+    return res.status(200).json({ success: true, message: "Order placed successfully." });
   } catch (error) {
     console.log(error, "error");
     return res.status(500).json({ error, success: false });
