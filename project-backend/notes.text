@@ -1,4 +1,4 @@
-AUTH - 5
+AUTH - 5 - COMPLETED
 register - select role -> user, seller, admin - COMPLETED
 login - COMPLETED
 current-session - fe hard refresh, -> redux - data - COMPLETED
@@ -29,13 +29,12 @@ SELLER - 9
 create product  - COMPLETED - 20th session
 view product - COMPLETED - 20th session
 View orders - COMPLETED - 27th session
-
+Change delivery status - pending, dispatch, delivered, - COMPLETED - 28th session
+Change payment status - unpaid, paid, partilly paid  - COMPLETED - 28th session
 
 PENDING
-Change delivery status - pending, dispatch, delivered, - pending
-Change payment status - unpaid, paid, partilly paid  - pending
-View profit  - pending -> product price : 100 -> 10% -> admin fund -> seller -10 -> admin +10
 
+View profit  - pending -> for single product price : 100  ruppes -> 10% -> admin fund -> seller -10 -> admin +10
 Dashboard api - seller details - pending
 
 

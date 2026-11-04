@@ -161,6 +161,9 @@ export const placeOrder = async (req, res) => {
     // await SellerOrderSchema.deleteMany({});
 
     userCart.products.map((product) => {
+
+      
+
       const newSellerOrder = SellerOrderSchema.create({
         user: userId,
         seller: product.sellerId,
@@ -168,6 +171,8 @@ export const placeOrder = async (req, res) => {
         price: product.price,
         address: { street, city, pincode, addressId: _id },
       })
+
+
     });
 
     console.log(userCart, "userCart");

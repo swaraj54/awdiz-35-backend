@@ -4,11 +4,12 @@ const productSchema = Schema({
   name: { type: String, require: true },
   description: { type: String, require: true },
   image: { type: String, require: true },
-  category: { type: String, enum: ["clothing", "electronics", "footwear","kitchen"] },
+  category: { type: String, enum: ["clothing", "electronics", "footwear", "kitchen"] },
   price: { type: Number },
+  mfgCost: { type: Number },  // 50
   stock: { type: Number },
   sellerId: { type: Schema.Types.ObjectId, ref: "users" },
-  approvedByAdmin : {type : Boolean, default : false}
+  approvedByAdmin: { type: Boolean, default: false }
 });
 
 // filter. - color- size-  tags

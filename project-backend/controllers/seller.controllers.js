@@ -47,3 +47,37 @@ export const getOrders = async (req, res) => {
     return res.status(500).json({ error, success: false });
   }
 };
+
+export const changePaymentStatus = async (req, res) => {
+  try {
+    const { orderId, newStatus: payment_status } = req.body;
+    if (!orderId || !payment_status) {
+      return res.status(404).json({ success: false, message: "All fields are required." });
+    }
+    const sellerId = req.user._id;
+    const updatedOrderDocument = await SellerOrderSchema.findOneAndUpdate({ _id: orderId, seller: sellerId }, { payment_status }, { new: true });
+    const orders = await SellerOrderSchema.find({ seller: sellerId }).populate("user product seller");
+    return res
+      .status(200)
+      .json({ success: true, orders });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+}
+
+export const changeDeliveryStatus = async (req, res) => {
+  try {
+    const { orderId, newStatus: delivery_status } = req.body;
+    if (!orderId || !delivery_status) {
+      return res.status(404).json({ success: false, message: "All fields are required." });
+    }
+    const sellerId = req.user._id;
+    const updatedOrderDocument = await SellerOrderSchema.findOneAndUpdate({ _id: orderId, seller: sellerId }, { delivery_status }, { new: true });
+    const orders = await SellerOrderSchema.find({ seller: sellerId }).populate("user product seller");
+    return res
+      .status(200)
+      .json({ success: true, orders });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+}

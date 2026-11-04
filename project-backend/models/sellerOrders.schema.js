@@ -4,7 +4,12 @@ const sellerOrderSchema = Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
     seller: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
     product: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
-    price: { type: Number },
+    mfgCost: { type: Number },  // 50
+    price: { type: Number },  // 100
+    finalCost: { type: Number },// price - deliverycost - serviceCost   100  -> -10% + -1% =  -11% -> 89
+    serviceCost: { type: Number }, // 10% -> 10
+    deliveryCost: { type: Number }, // 1% -> 1
+    profit: { type: Number }, //  finalCost - mfgCost => 89 - 50 =? 39
     address: {
         street: { type: String },
         city: { type: String },

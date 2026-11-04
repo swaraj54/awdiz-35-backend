@@ -6,6 +6,7 @@ const orderSchema = Schema({
     {
       productId: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
       price: { type: Number },
+      sellerOrderId: { type: mongoose.Schema.Types.ObjectId, ref: "sellerOrders" },
     },
   ],
   address: {
