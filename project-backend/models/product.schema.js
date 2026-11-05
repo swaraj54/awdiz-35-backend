@@ -5,7 +5,7 @@ const productSchema = Schema({
   description: { type: String, require: true },
   image: { type: String, require: true },
   category: { type: String, enum: ["clothing", "electronics", "footwear", "kitchen"] },
-  price: { type: Number },
+  price: { type: Number }, // 100
   mfgCost: { type: Number },  // 50
   stock: { type: Number },
   sellerId: { type: Schema.Types.ObjectId, ref: "users" },

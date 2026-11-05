@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getProducts, createProduct, getOrders, changePaymentStatus, changeDeliveryStatus } from "../controllers/seller.controllers.js";
+import { getProducts, createProduct, getOrders, changePaymentStatus, changeDeliveryStatus, getDashboardData } from "../controllers/seller.controllers.js";
 
 const SellerRouter = Router();
 
@@ -12,4 +12,6 @@ SellerRouter.get("/get-orders", getOrders);
 SellerRouter.put("/change-payment-status", changePaymentStatus);
 
 SellerRouter.put("/change-delivery-status", changeDeliveryStatus);
+
+SellerRouter.get("/get-dashboard-data", getDashboardData);
 export default SellerRouter;

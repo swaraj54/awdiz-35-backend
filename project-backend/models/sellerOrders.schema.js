@@ -6,10 +6,10 @@ const sellerOrderSchema = Schema({
     product: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
     mfgCost: { type: Number },  // 50
     price: { type: Number },  // 100
-    finalCost: { type: Number },// price - deliverycost - serviceCost   100  -> -10% + -1% =  -11% -> 89
+    finalCost: { type: Number },// price - deliverycost - serviceCost   100  -> -10% + -5% =  -15% -> 85
     serviceCost: { type: Number }, // 10% -> 10
-    deliveryCost: { type: Number }, // 1% -> 1
-    profit: { type: Number }, //  finalCost - mfgCost => 89 - 50 =? 39
+    deliveryCost: { type: Number }, // 5% -> 5
+    profit: { type: Number }, //  finalCost - mfgCost => 85 - 50 =? 35
     address: {
         street: { type: String },
         city: { type: String },

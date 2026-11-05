@@ -81,3 +81,39 @@ export const changeDeliveryStatus = async (req, res) => {
     return res.status(500).json({ error, success: false });
   }
 }
+
+export const getDashboardData = async (req, res) => {
+  try {
+
+    const sellerId = req.user._id;
+    const totalOrders = await SellerOrderSchema.countDocuments({ seller: sellerId });
+
+    const totalProfit = await SellerOrderSchema.aggregate([
+      { $match: { seller: sellerId } },
+      { $group: { _id: null, totalProfit: { $sum: "$profit" } } }
+    ]);
+    const totalProducts = await ProductSchema.countDocuments({ sellerId });
+    const totalStock = await ProductSchema.aggregate([
+      { $match: { sellerId } },
+      { $group: { _id: null, totalStock: { $sum: "$stock" } } }
+    ]);
+    const totalPendingOrders = await SellerOrderSchema.countDocuments({ seller: sellerId, delivery_status: "booked" });
+    const totalDispatchedOrders = await SellerOrderSchema.countDocuments({ seller: sellerId, delivery_status: "dispatched" });
+    const totalDeliveredOrders = await SellerOrderSchema.countDocuments({ seller: sellerId, delivery_status: "delivered" });
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        totalOrders,
+        totalProfit: totalProfit[0]?.totalProfit || 0,
+        totalProducts,
+        totalStock: totalStock[0]?.totalStock || 0,
+        totalPendingOrders,
+        totalDispatchedOrders,
+        totalDeliveredOrders
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+}

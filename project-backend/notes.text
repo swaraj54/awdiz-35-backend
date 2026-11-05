@@ -15,9 +15,10 @@ View Product- COMPLETED - 20th session
 product approval  - COMPLETED - 20th session
 
 PENDING
-Dashboard api - all details - pending
 view orders - pending
 view profit - based on product sell -> 5% comission  - pending
+Dashboard api - all details - pending
+
 
 schema 
 seller 
@@ -31,11 +32,9 @@ view product - COMPLETED - 20th session
 View orders - COMPLETED - 27th session
 Change delivery status - pending, dispatch, delivered, - COMPLETED - 28th session
 Change payment status - unpaid, paid, partilly paid  - COMPLETED - 28th session
+View profit  COMPLETED - 29th -> for single product price : 100  ruppes -> 10% -> admin fund -> seller -10 -> admin +10
+Dashboard api - profit - seller details -  COMPLETED - 29th
 
-PENDING
-
-View profit  - pending -> for single product price : 100  ruppes -> 10% -> admin fund -> seller -10 -> admin +10
-Dashboard api - seller details - pending
 
 
 USER - 10 PENDING

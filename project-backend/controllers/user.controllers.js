@@ -154,21 +154,28 @@ export const placeOrder = async (req, res) => {
     const { street, city, pincode, _id } = req.body;
     const userCart = await CartSchema.findOne({ user: userId }).populate({
       path: "products",
-      select: "_id price sellerId",
+      select: "_id price sellerId mfgCost",
     });
 
     // await OrderSchema.deleteMany({ user: userId });
     // await SellerOrderSchema.deleteMany({});
-
+    let deliveryCost = process.env.DELIVERY_COST || 5;
+    let serviceCost = process.env.SERVICE_COST || 10;
     userCart.products.map((product) => {
-
-      
+      // 100 - (100 * 10) / 100 - (100 * 5) / 100 = 85
+      let calculatedPrice = product.price - ((product.price * serviceCost) / 100) - ((product.price * deliveryCost) / 100);
+      // console.log(calculatedPrice, product.mfgCost, "profit");
 
       const newSellerOrder = SellerOrderSchema.create({
         user: userId,
         seller: product.sellerId,
         product: product._id,
+        mfgCost: product.mfgCost,
         price: product.price,
+        finalCost: calculatedPrice,
+        serviceCost: ((product.price * serviceCost) / 100),
+        deliveryCost: ((product.price * deliveryCost) / 100),
+        profit: calculatedPrice - product.mfgCost,  // 85 - 50 = 35
         address: { street, city, pincode, addressId: _id },
       })
 
