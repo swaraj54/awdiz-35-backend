@@ -26,7 +26,7 @@ product
 orders 
 profit 
 
-SELLER - 9
+SELLER - 9 - COMPLETED
 create product  - COMPLETED - 20th session
 view product - COMPLETED - 20th session
 View orders - COMPLETED - 27th session
@@ -37,7 +37,7 @@ Dashboard api - profit - seller details -  COMPLETED - 29th
 
 
 
-USER - 10 PENDING
+USER - 10 
 view profile - COMPLETED 21th session
 view selected category products   - COMPLETED 21th session
 filter  - COMPLETED 21th session - assignment filter out with price 
@@ -48,7 +48,7 @@ place orders  - COMPLETED 25th session
 change password  - COMPLETED 26th session
 view orders - COMPLETED - 26 TH session
 
-
+PENDING 
 Home Page  - pending
     - navbar - category -> dropdown 
     - product - top products -> tags : ["best selling"]
@@ -167,3 +167,10 @@ TEST
 
 
 
+
+
+DEPLOYMENT - serverless - without server - vercel , netlify, render 
+FRONTEND - vercel, COMPLETED WITH BACKEND URL NEEDS TO ADD
+BACKEND - render 
+
+github repo of frontend - vercel -> github login - repo -> select -> project backend -> env -> 

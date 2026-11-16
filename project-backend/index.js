@@ -11,7 +11,7 @@ const app = express();
 app.use(cookieParser())
 dotenv.config();
 app.use(express.json())
-const corsConfig = { origin : "http://localhost:5173", credentials : true}
+const corsConfig = { origin: ["http://localhost:5173", "https://awdiz-35-react.vercel.app"], credentials: true }
 app.use(cors(corsConfig))
 app.use(morgan('combined'))
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", MainRouter)
 
-mongoose.connect(process.env.MONGODBURL).then(()=>{
+mongoose.connect(process.env.MONGODBURL).then(() => {
   console.log("Database connected.")
 })
 
