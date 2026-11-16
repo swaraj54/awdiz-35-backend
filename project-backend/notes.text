@@ -174,3 +174,9 @@ FRONTEND - vercel, COMPLETED WITH BACKEND URL NEEDS TO ADD
 BACKEND - render 
 
 github repo of frontend - vercel -> github login - repo -> select -> project backend -> env -> 
+
+1.deploy frontend 
+2.deploy backend 
+3.add backend deployed url into frontend axios config file and make a push 
+4.add frontend deployed yrl into cors config section also in login 
+controller while sending cookie add more configuration and make a push 
