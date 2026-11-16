@@ -68,12 +68,17 @@ export const loginController = async (req, res) => {
 
     console.log(token, "token");
 
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+    });
 
     return res.status(200).json({
       success: true,
       message: "Login successfull.",
-      user: { name: user.name, email: user.email, role : user.role },
+      user: { name: user.name, email: user.email, role: user.role },
     });
   } catch (error) {
     console.log(error, "error");
@@ -88,7 +93,7 @@ export const getCurrentUser = async (req, res) => {
       .status(200)
       .json({
         success: true,
-        user: { name: req.user.name, email: req.user.email, role : req.user.role },
+        user: { name: req.user.name, email: req.user.email, role: req.user.role },
       });
   } catch (error) {
     console.log(error, "error");
@@ -97,10 +102,10 @@ export const getCurrentUser = async (req, res) => {
 };
 
 
-export const logoutController = async (req, res)=>{
+export const logoutController = async (req, res) => {
   try {
     res.clearCookie("token");
-    return res.status(200).json({success : true, message : "Logout successfull."})
+    return res.status(200).json({ success: true, message: "Logout successfull." })
 
   } catch (error) {
     console.log(error, "error");
