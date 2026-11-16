@@ -180,3 +180,30 @@ github repo of frontend - vercel -> github login - repo -> select -> project bac
 3.add backend deployed url into frontend axios config file and make a push 
 4.add frontend deployed yrl into cors config section also in login 
 controller while sending cookie add more configuration and make a push 
+
+
+
+github
+REPO -> multiple user collaborate 
+main branch 
+
+Business 
+basic but imp function 
+version 1
+manager ceo cto customer 
+sprint 1  - 10 features - 1 month 
+sprint 2 - 5 feature - 2 month 
+main
+prod 
+dev 
+sprint-1
+sprint-2
+sprint-3  
+backup-sprint-1-6
+backup-sprint-7-12 
+
+sprint-5 - 1 month - non prod - tester will test -> prod deploy
+feature/like-on-post  - 2 day
+bug/comment-reply - 1 day  
+
+ 
