@@ -1,5 +1,6 @@
 import UserSchema from "../models/user.schema.js";
 import ProductSchema from "../models/product.schema.js";
+import SellerOrderSchema from "../models/sellerOrders.schema.js";
 
 export const getAllSellers = async (req, res) => {
   try {
@@ -30,7 +31,7 @@ export const approveSeller = async (req, res) => {
         .json({ success: false, message: "Seller is required." });
     }
     await UserSchema.findByIdAndUpdate(sellerId, { isApprovedByAdmin: true });
-    return res.status(200).json({ success: true, message : "Seller approved." });
+    return res.status(200).json({ success: true, message: "Seller approved." });
   } catch (error) {
     return res.status(500).json({ error, success: false });
   }
@@ -38,9 +39,9 @@ export const approveSeller = async (req, res) => {
 
 export const approveProduct = async (req, res) => {
   try {
-    const {productId} = req.body;
+    const { productId } = req.body;
     await ProductSchema.findByIdAndUpdate(productId, { approvedByAdmin: true });
-    return res.status(200).json({ success: true, message : "Product approved." });
+    return res.status(200).json({ success: true, message: "Product approved." });
   } catch (error) {
     return res.status(500).json({ error, success: false });
   }
@@ -51,6 +52,29 @@ export const getAllProducts = async (req, res) => {
   try {
     const products = await ProductSchema.find({});
     return res.status(200).json({ success: true, products });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+};
+
+export const getAllOrderDetails = async (req, res) => {
+  try {
+    const orders = await SellerOrderSchema.find({}).populate("user product seller");
+
+    // const adminProfit = orders.reduce((acc, order) => acc + order.serviceCost, 0);
+
+    // const deliveryProfit = orders.reduce((acc, order) => acc + order.deliveryCost, 0);
+
+    const data = await SellerOrderSchema.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalAdminProfit: { $sum: "$serviceCost" },
+          totalDeliveryProfit: { $sum: "$deliveryCost" }
+        }
+      }])
+
+    return res.status(200).json({ success: true, orders, adminProfit: data[0].totalAdminProfit, deliveryProfit: data[0].totalDeliveryProfit });
   } catch (error) {
     return res.status(500).json({ error, success: false });
   }
