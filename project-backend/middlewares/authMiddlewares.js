@@ -13,7 +13,7 @@ export const tokenDecoder = async (req, res, next) => {
     const decodedData = await jwt.verify(token, process.env.JWT_SECRET);
     console.log(decodedData, "decodedData");
 
-    const isUserExist = await UserSchema.findOne({ email: decodedData.email });
+    const isUserExist = await UserSchema.findById(decodedData.id);
 
     if (!isUserExist) {
       return res

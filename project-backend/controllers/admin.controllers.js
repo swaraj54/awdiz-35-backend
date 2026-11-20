@@ -79,3 +79,24 @@ export const getAllOrderDetails = async (req, res) => {
     return res.status(500).json({ error, success: false });
   }
 };
+
+export const getDashboardData = async (req, res) => {
+  try {
+    const totalUsers = await UserSchema.countDocuments({ role: "user" });
+    const totalSellers = await UserSchema.countDocuments({ role: "seller", isApprovedByAdmin: true });
+    const totalProducts = await ProductSchema.countDocuments({ approvedByAdmin: true });
+    const totalOrders = await SellerOrderSchema.countDocuments({});
+
+    const Admindata = await SellerOrderSchema.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalProfit: { $sum: "$serviceCost" }
+        }
+      }])
+
+    return res.status(200).json({ success: true, data: { totalProfit: Admindata[0].totalProfit, totalUsers, totalSellers, totalProducts, totalOrders } });
+  } catch (error) {
+    return res.status(500).json({ error, success: false });
+  }
+}

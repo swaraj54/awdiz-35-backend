@@ -11,7 +11,7 @@ export const registerController = async (req, res) => {
         .json({ success: false, message: "All fields are required." });
     }
 
-    const isEmailExists = await UserSchema.findOne({ email: email });
+    const isEmailExists = await UserSchema.findOne({ email: email, isAccountDeleted: false });
 
     if (isEmailExists) {
       return res.status(404).json({
@@ -49,7 +49,7 @@ export const loginController = async (req, res) => {
         .json({ success: false, message: "All fields are required." });
     }
 
-    const user = await UserSchema.findOne({ email });
+    const user = await UserSchema.findOne({ email, isAccountDeleted: false });
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -64,7 +64,7 @@ export const loginController = async (req, res) => {
         .json({ success: false, message: "Password is wrong." });
     }
 
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
     console.log(token, "token");
 
@@ -107,6 +107,27 @@ export const logoutController = async (req, res) => {
     res.clearCookie("token");
     return res.status(200).json({ success: true, message: "Logout successfull." })
 
+  } catch (error) {
+    console.log(error, "error");
+    return res.status(500).json({ error, success: false });
+  }
+}
+
+
+
+export const deleteAccount = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await UserSchema.findByIdAndUpdate(
+      userId,
+      { isAccountDeleted: true },
+      { new: true }
+    );
+
+    res.clearCookie("token");
+
+    return res.status(200).json({ success: true, message: "Account deleted successfully." });
   } catch (error) {
     console.log(error, "error");
     return res.status(500).json({ error, success: false });

@@ -1,10 +1,11 @@
 import express from "express";
 import dotenv from "dotenv"
-import mongoose from "mongoose";
+import mongoose, { trusted } from "mongoose";
 import cors from "cors"
 import morgan from "morgan";
 import MainRouter from "./routes/index.js";
 import cookieParser from "cookie-parser";
+import ProductSchema from "./models/product.schema.js";
 
 
 const app = express();
@@ -18,6 +19,12 @@ app.use(morgan('combined'))
 app.get("/", (req, res) => {
   res.send("Hello from backend.");
 });
+
+// async function updateProducts() {
+//   const res = await ProductSchema.updateMany({ approvedByAdmin: true }, { tags: ["best seller", "popular", "trending", "affordable"] });
+// }
+// updateProducts()
+
 
 app.use("/api", MainRouter)
 

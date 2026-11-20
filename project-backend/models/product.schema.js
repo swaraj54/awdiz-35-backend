@@ -9,7 +9,8 @@ const productSchema = Schema({
   mfgCost: { type: Number },  // 50
   stock: { type: Number },
   sellerId: { type: Schema.Types.ObjectId, ref: "users" },
-  approvedByAdmin: { type: Boolean, default: false }
+  approvedByAdmin: { type: Boolean, default: false },
+  tags: { type: [String], default: [] },
 });
 
 // filter. - color- size-  tags

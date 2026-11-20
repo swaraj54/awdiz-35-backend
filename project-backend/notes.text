@@ -14,9 +14,7 @@ view users  - COMPLETED
 View Product- COMPLETED - 20th session
 product approval  - COMPLETED - 20th session
 view orders - view profit - based on product sell -> 5% comission  - COMPLETED - 31th session
-
-PENDING
-Dashboard api - all details - pending
+Dashboard api - all details -  - COMPLETED - 32th session
 
 
 schema 
@@ -38,6 +36,7 @@ Dashboard api - profit - seller details -  COMPLETED - 29th
 
 USER - 10 
 view profile - COMPLETED 21th session
+edit profile - COMPLETED
 view selected category products   - COMPLETED 21th session
 filter  - COMPLETED 21th session - assignment filter out with price 
 single product  - COMPLETED 22nd session
@@ -46,15 +45,8 @@ create/select address - COMPLETED 23rd session
 place orders  - COMPLETED 25th session
 change password  - COMPLETED 26th session
 view orders - COMPLETED - 26 TH session
-
-PENDING 
-Home Page  - pending
-    - navbar - category -> dropdown 
-    - product - top products -> tags : ["best selling"]
-wishlist product - pending
-edit profile - pending
-delete deactivation profile  - pending
-
+Home Page  - product - top products -> tags : ["best selling"] - COMPLETED - 32th session
+delete -> same number/email -> new account -> allow - pending- COMPLETED - 32th session
 
 
 
@@ -72,17 +64,17 @@ wishlist
 address 
 
 Extra  - 10
-make dynamic tags 
 best selling  - track product in orders
 trending product - view
 offer - based on price 
 home - banner 1,2,3 - images - admin - set - offer images - schema -> banner no. -> active  
 product offer price -> price and start date and end date
-rating and comments 
 forgot password  - pending
 edit product  - pending
 delete product  - pending
-
+wishlist product - pending
+rating and comments 
+make dynamic tags 
 
 Schema List  -  8
 

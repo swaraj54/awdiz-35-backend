@@ -261,3 +261,14 @@ export const changePassword = async (req, res) => {
     return res.status(500).json({ error, success: false });
   }
 }
+
+export const getDashboardData = async (req, res) => {
+  try {
+    const bestSellingProducts = await ProductSchema.find({ approvedByAdmin: true, tags: { $in: ["best seller"] } }).sort({ tags: -1 }).limit(4);
+    return res.status(200).json({ success: true, bestSellingProducts: bestSellingProducts });
+
+  } catch (error) {
+    console.log(error, "error");
+    return res.status(500).json({ error, success: false });
+  }
+}
